@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "EuroTruck (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "EuroTruck (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
