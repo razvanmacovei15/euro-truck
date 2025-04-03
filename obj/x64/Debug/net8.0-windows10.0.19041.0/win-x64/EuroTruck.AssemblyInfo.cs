@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EuroTruck")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+30ee27c2b87227b788bd4c3f1c2b61ffe6b4e9b7")]
 [assembly: System.Reflection.AssemblyProductAttribute("EuroTruck")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EuroTruck")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

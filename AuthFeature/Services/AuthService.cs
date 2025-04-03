@@ -5,40 +5,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
+using EuroTruck.AuthFeature.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace EuroTruck.AuthFeature.Services
 {
     public class AuthService
     {
-        private readonly string connectionString = "Server=localhost;Port=5432;Database=truck-company;User Id=postgres;Password=postgres;";
+        private readonly AppDbContext _db;
+
+        public AuthService(AppDbContext db)
+        {
+            _db = db;
+        }
 
         public async Task<bool> RegisterAsync(User user)
         {
-            using var conn = new NpgsqlConnection(connectionString);
-            await conn.OpenAsync();
-            string sql = "INSERT INTO users (username, password) VALUES (@username, @password)";
-            using var cmd = new NpgsqlCommand(sql, conn);
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            cmd.Parameters.AddWithValue("username", user.Username);
-            cmd.Parameters.AddWithValue("password", hashedPassword);
-            await cmd.ExecuteNonQueryAsync();
-            return true;
+            try
+            {
+                Console.WriteLine("Checking if user exists...");
+
+                if (await _db.Users.AnyAsync(u => u.Username == user.Username))
+                {
+                    Console.WriteLine("User already exists.");
+                    return false;
+                }
+
+                Console.WriteLine("Hashing password...");
+                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+
+                Console.WriteLine("Adding user...");
+                _db.Users.Add(user);
+
+                Console.WriteLine("Saving changes...");
+                await _db.SaveChangesAsync();
+
+                Console.WriteLine("User registered successfully.");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("EXCEPTION: " + ex.Message);
+                throw;
+            }
         }
 
         public async Task<bool> LoginAsync(User user)
         {
-            using var conn = new NpgsqlConnection(connectionString);
-            await conn.OpenAsync();
-            string sql = "SELECT password FROM users WHERE username = @username";
-            using var cmd = new NpgsqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("username", user.Username);
-            using var reader = await cmd.ExecuteReaderAsync();
-            if (await reader.ReadAsync())
-            {
-                string storedHash = reader.GetString(0);
-                return BCrypt.Net.BCrypt.Verify(user.Password, storedHash);
-            }
-            return false;
+            var existingUser = await _db.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
+            return existingUser != null && BCrypt.Net.BCrypt.Verify(user.Password, existingUser.Password);
         }
     }
 }

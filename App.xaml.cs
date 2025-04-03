@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using EuroTruck.AuthFeature.Data;
+using EuroTruck.AuthFeature.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -26,6 +30,8 @@ namespace EuroTruck
     /// </summary>
     public partial class App : Application
     {
+        public static IServiceProvider Services { get; private set; }
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -33,6 +39,19 @@ namespace EuroTruck
         public App()
         {
             this.InitializeComponent();
+            var services = new ServiceCollection();
+            ConfigureServices(services);
+            Services = services.BuildServiceProvider();
+
+        }
+
+        private void ConfigureServices(IServiceCollection services)
+        {
+            var connStr = "Host=localhost;Port=5432;Database=truck-company;Username=postgres;Password=postgres;";
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseNpgsql(connStr));
+            services.AddScoped<AuthService>();
+
         }
 
         /// <summary>

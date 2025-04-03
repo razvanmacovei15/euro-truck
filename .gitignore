@@ -1,0 +1,25 @@
+# Visual Studio
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Build output
+bin/
+obj/
+
+# Windows stuff
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+
+# EF Core Migrations metadata (optional)
+Migrations/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.DS_Store

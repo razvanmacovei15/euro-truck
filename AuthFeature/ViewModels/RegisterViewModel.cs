@@ -4,12 +4,13 @@ using System.Windows.Input;
 using EuroTruck.AuthFeature.Helpers;
 using EuroTruck.AuthFeature.Model;
 using EuroTruck.AuthFeature.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EuroTruck.AuthFeature.ViewModels
 {
     public class RegisterViewModel : INotifyPropertyChanged
     {
-        private readonly AuthService authService = new AuthService();
+        private readonly AuthService _authService;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string Username { get; set; }
@@ -20,14 +21,22 @@ namespace EuroTruck.AuthFeature.ViewModels
 
         public RegisterViewModel()
         {
+            _authService = App.Services.GetRequiredService<AuthService>();
             RegisterCommand = new RelayCommand(async _ => await Register());
         }
 
-        private async Task Register()
+        public async Task<bool> Register()
         {
-            if (Password != ConfirmPassword) return;
-            var user = new User { Username = Username, Password = Password };
-            await authService.RegisterAsync(user);
+            if (Password != ConfirmPassword)
+                return false;
+
+            var user = new User
+            {
+                Username = Username,
+                Password = Password
+            };
+
+            return await _authService.RegisterAsync(user);
         }
     }
 }
