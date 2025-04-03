@@ -7335,6 +7335,7 @@
       "Microsoft.EntityFrameworkCore >= 9.0.3",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.3",
       "Microsoft.Extensions.DependencyInjection >= 9.0.3",
+      "Microsoft.Extensions.DependencyInjection.Abstractions >= 9.0.3",
       "Microsoft.Windows.SDK.BuildTools >= 10.0.26100.1742",
       "Microsoft.WindowsAppSDK >= 1.7.250310001",
       "Npgsql >= 9.0.3",
@@ -7349,11 +7350,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maco\\Desktop\\coding\\iss\\EuroTruck\\EuroTruck\\EuroTruck.csproj",
+      "projectUniqueName": "C:\\Users\\maco\\Desktop\\coding\\new-iss\\euro-truck\\EuroTruck.csproj",
       "projectName": "EuroTruck",
-      "projectPath": "C:\\Users\\maco\\Desktop\\coding\\iss\\EuroTruck\\EuroTruck\\EuroTruck.csproj",
+      "projectPath": "C:\\Users\\maco\\Desktop\\coding\\new-iss\\euro-truck\\EuroTruck.csproj",
       "packagesPath": "C:\\Users\\maco\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maco\\Desktop\\coding\\iss\\EuroTruck\\EuroTruck\\obj\\",
+      "outputPath": "C:\\Users\\maco\\Desktop\\coding\\new-iss\\euro-truck\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -7407,6 +7408,10 @@
             "version": "[9.0.3, )"
           },
           "Microsoft.Extensions.DependencyInjection": {
+            "target": "Package",
+            "version": "[9.0.3, )"
+          },
+          "Microsoft.Extensions.DependencyInjection.Abstractions": {
             "target": "Package",
             "version": "[9.0.3, )"
           },

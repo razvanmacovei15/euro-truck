@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maco\\Desktop\\coding\\iss\\EuroTruck\\EuroTruck\\EuroTruck.csproj": {}
+    "C:\\Users\\maco\\Desktop\\coding\\new-iss\\euro-truck\\EuroTruck.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maco\\Desktop\\coding\\iss\\EuroTruck\\EuroTruck\\EuroTruck.csproj": {
+    "C:\\Users\\maco\\Desktop\\coding\\new-iss\\euro-truck\\EuroTruck.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maco\\Desktop\\coding\\iss\\EuroTruck\\EuroTruck\\EuroTruck.csproj",
+        "projectUniqueName": "C:\\Users\\maco\\Desktop\\coding\\new-iss\\euro-truck\\EuroTruck.csproj",
         "projectName": "EuroTruck",
-        "projectPath": "C:\\Users\\maco\\Desktop\\coding\\iss\\EuroTruck\\EuroTruck\\EuroTruck.csproj",
+        "projectPath": "C:\\Users\\maco\\Desktop\\coding\\new-iss\\euro-truck\\EuroTruck.csproj",
         "packagesPath": "C:\\Users\\maco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maco\\Desktop\\coding\\iss\\EuroTruck\\EuroTruck\\obj\\",
+        "outputPath": "C:\\Users\\maco\\Desktop\\coding\\new-iss\\euro-truck\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -65,6 +65,10 @@
               "version": "[9.0.3, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
               "version": "[9.0.3, )"
             },

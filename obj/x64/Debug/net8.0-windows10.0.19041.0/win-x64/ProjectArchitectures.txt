@@ -1,1 +1,1 @@
-C:\Users\maco\Desktop\coding\iss\EuroTruck\EuroTruck\EuroTruck.csproj;x64
+C:\Users\maco\Desktop\coding\new-iss\euro-truck\EuroTruck.csproj;x64
